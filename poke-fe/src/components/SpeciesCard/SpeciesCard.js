@@ -1,6 +1,5 @@
 import React from 'react'
 import DescriptionCard from '../DescriptionCard'
-import { getPokemonSpecies } from '../../requests'
 import { SpeciesBody, SpeciesDiv } from './styles'
 
 function SpeciesCard(props) {
