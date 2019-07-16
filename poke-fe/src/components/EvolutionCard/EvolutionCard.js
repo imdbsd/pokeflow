@@ -36,7 +36,7 @@ function EvolutionCard(props) {
                   )}
                   &nbsp;
                   {pokemon.evolutionChain[index + 1].triggerName === 'use-item'
-                    ? pokemon.evolutionChain[index + 1].item.name
+                    ? pokemon.evolutionChain[index + 1].item
                     : 'at ' + pokemon.evolutionChain[index + 1].minLevel}
                 </EvolutionStatus>
                 <img src={ArrowRight} alt="arrow right" />
