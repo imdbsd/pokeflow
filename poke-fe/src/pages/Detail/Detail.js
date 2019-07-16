@@ -13,7 +13,6 @@ import {
   StatsCard,
   EvolutionCard
 } from '../../components'
-import { getPokemon } from '../../requests'
 
 type DetailProps = {
   history: History,
@@ -84,18 +83,8 @@ class Detail extends Component<DetailProps, *> {
     }
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.loadVibrant()
-    try {
-      const { match } = this.props
-      const response = await getPokemon(parseInt(match.params.id))
-      this.setState({
-        pokemon: response
-      })
-      console.log({ response })
-    } catch (e) {
-      console.log(e)
-    }
   }
 
   render() {
@@ -112,42 +101,38 @@ class Detail extends Component<DetailProps, *> {
             const { findPokemonById } = data
             return (
               <AppContainer>
-                {Object.keys(this.state.pokemon).length > 0 && (
-                  <Fragment>
-                    <PokemonDetailCard
-                      pokemon={{
-                        name: findPokemonById.name,
-                        id: findPokemonById.id,
-                        types: findPokemonById.types
-                      }}
-                      vibrant={this.state.vibrant}
-                    />
-                    <SpeciesCard
-                      pokemon={{
-                        height: findPokemonById.height,
-                        weight: findPokemonById.weight,
-                        flavourText: findPokemonById.desc
-                      }}
-                      vibrant={this.state.vibrant}
-                    />
-                    <AbilitiesCard
-                      pokemon={{
-                        abilities: findPokemonById.abilities
-                      }}
-                      vibrant={this.state.vibrant}
-                    />
-                    <StatsCard
-                      pokemon={{ stats: findPokemonById.stats }}
-                      vibrant={this.state.vibrant}
-                    />
-                    <EvolutionCard
-                      pokemon={{
-                        evolutionChain: findPokemonById.evolutionChain
-                      }}
-                      vibrant={this.state.vibrant}
-                    />
-                  </Fragment>
-                )}
+                <PokemonDetailCard
+                  pokemon={{
+                    name: findPokemonById.name,
+                    id: findPokemonById.id,
+                    types: findPokemonById.types
+                  }}
+                  vibrant={this.state.vibrant}
+                />
+                <SpeciesCard
+                  pokemon={{
+                    height: findPokemonById.height,
+                    weight: findPokemonById.weight,
+                    flavourText: findPokemonById.desc
+                  }}
+                  vibrant={this.state.vibrant}
+                />
+                <AbilitiesCard
+                  pokemon={{
+                    abilities: findPokemonById.abilities
+                  }}
+                  vibrant={this.state.vibrant}
+                />
+                <StatsCard
+                  pokemon={{ stats: findPokemonById.stats }}
+                  vibrant={this.state.vibrant}
+                />
+                <EvolutionCard
+                  pokemon={{
+                    evolutionChain: findPokemonById.evolutionChain
+                  }}
+                  vibrant={this.state.vibrant}
+                />
               </AppContainer>
             )
           }}

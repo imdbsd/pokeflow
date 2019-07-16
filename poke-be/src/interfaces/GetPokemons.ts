@@ -1,3 +1,7 @@
 interface GetPokemonResponse {
     
 }
+
+export {
+    GetPokemonResponse
+}
