@@ -1,0 +1,147 @@
+type RepositoryResponse {
+    success: Boolean
+    repository: Repository
+    error: GraphError
+}
+
+type IssuesResponse {
+    success: Boolean
+    issues: Issues
+    error: GraphError
+}
+
+type Issues {
+    totalCount: Int
+    pageInfo: PageInfoStatus
+    nodes: [IssuesNode]
+}
+
+type PageInfoStatus {
+    startCursor: String
+    endCursor: String
+    hasNextPage: Boolean
+    hasPreviousPage: Boolean
+}
+
+type IssuesNode {
+    id: ID
+    title: String
+    number: Int
+    state: State
+    createdAt: String
+    author: GithubUser
+}
+
+type Repository {
+    id: ID
+    name: String
+    owner: GithubUser
+    createdAt: String
+    totalIssues: CounterOnly
+    openIssues: CounterOnly
+    closedIssues: CounterOnly
+    totalPullRequest: CounterOnly
+    openPullRequest: CounterOnly
+    closedPullRequest: CounterOnly
+    mergedPullRequest: CounterOnly
+}
+
+type CounterOnly {
+    totalCount: Int
+}
+
+type GithubUser {
+    login: String
+    avatarUrl: String
+}
+
+type GraphError {
+    type: String
+    message: String
+}
+
+enum CursorDirection {
+    before
+    after
+}
+
+type IssueResponse {
+    success: Boolean
+    issue: Issue
+    error: GraphError
+}
+
+type Issue {
+    id: ID
+    title: String
+    createdAt: String
+    state: String
+    body: String
+    bodyHTML: String
+    author: GithubUser
+    comments: Comments
+}
+
+type Comments {
+    totalCount: Int
+    pageInfo: PageInfoStatus
+    nodes: [Comment]
+}
+
+type Comment {
+    id: ID
+    createdAt: String
+    author: GithubUser
+    body: String
+    bodyHTML: String
+}
+
+enum State {
+    OPEN
+    CLOSED
+}
+
+# pokemon type
+type PokemonPage {
+    id: ID!
+    name: String
+    url: String
+}
+
+type GetPokemonsResponse {
+    pokemons: [PokemonPage]
+    count: Int
+    next: String
+    previous: String
+}
+
+type PokemonData {
+    id: ID!
+    name: String
+    height: Int
+    weight: Int
+    sprites: String
+    abilities: [PokemonAbilities] 
+    stats: [PokemonStats]
+    types: [String]
+    evolutionChain: [EvolutionChain]
+    desc: String
+}
+
+type PokemonAbilities {
+    isHidden: Boolean
+    name: String
+}
+
+type EvolutionChain {
+    id: Int
+    item: String
+    minLevel: Int
+    speciesName: String
+    triggerName: String
+}
+
+type PokemonStats {
+    baseStat: Int
+    name: String
+}

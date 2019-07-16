@@ -1,0 +1,7 @@
+# import * from 'types.graphql'
+
+type Query {
+    getPokemons(url: String): GetPokemonsResponse
+    findPokemonByName(name: String): PokemonData
+    findPokemonById(id: ID): PokemonData
+}
