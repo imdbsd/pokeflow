@@ -28,7 +28,7 @@ class Search extends Component<{}, SearchState> {
 
   handleSearchPokemon = (key: string) => {
     if (key) {
-      this.setState({ searchKey: key })
+      this.setState({ searchKey: key.toLowerCase() })
     }
   }
 
@@ -46,8 +46,8 @@ class Search extends Component<{}, SearchState> {
               {loading && this.state.searchKey !== '' && 'Loading...'}
               {error &&
                 this.state.searchKey !== '' &&
-                `Error! ${error.message}`}
-              {data && data.findPokemonByName && (
+                `cannot find pokemon with key: ${this.state.searchKey}`}
+              {!loading && !error && data && data.findPokemonByName && (
                 <AppContainer>
                   <PokemonCard
                     id={data.findPokemonByName ? data.findPokemonByName.id : ''}
