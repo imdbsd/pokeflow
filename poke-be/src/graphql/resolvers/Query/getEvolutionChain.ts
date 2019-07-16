@@ -60,7 +60,7 @@ function extractChain(chain: any): Array<any> {
         speciesName: evoData.species.name,
         minLevel: !evoDetails ? 1 : evoDetails.min_level,
         triggerName: !evoDetails ? null : evoDetails.trigger.name,
-        item: !evoDetails ? null : evoDetails.item
+        item: !evoDetails ? null : (evoDetails.item ? evoDetails.item.name : null)
       })
   
       evoData = evoData['evolves_to'][0]
