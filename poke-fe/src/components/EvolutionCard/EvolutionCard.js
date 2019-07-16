@@ -10,7 +10,7 @@ function EvolutionCard(props) {
   return (
     <DescriptionCard title="Evolution" vibrant={vibrant.hex}>
       <EvolutionChain>
-        {props.pokemon.evolutionChain.map((chain, index) => (
+        {pokemon.evolutionChain.map((chain, index) => (
           <Fragment key={`evolve_${chain.id}`}>
             <EvolutionContainer>
               <Link
@@ -22,22 +22,22 @@ function EvolutionCard(props) {
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
                     chain.id
                   }.png`}
+                  alt={chain.speciesName}
                 />
               </Link>
               <p>{chain.speciesName}</p>
             </EvolutionContainer>
-            {index < props.pokemon.evolutionChain.length - 1 && (
+            {index < pokemon.evolutionChain.length - 1 && (
               <div>
                 <EvolutionStatus>
-                  {props.pokemon.evolutionChain[index + 1].triggerName.replace(
+                  {pokemon.evolutionChain[index + 1].triggerName.replace(
                     /-/g,
                     ' '
                   )}
                   &nbsp;
-                  {props.pokemon.evolutionChain[index + 1].triggerName ===
-                  'use-item'
-                    ? props.pokemon.evolutionChain[index + 1].item.name
-                    : 'at ' + props.pokemon.evolutionChain[index + 1].minLevel}
+                  {pokemon.evolutionChain[index + 1].triggerName === 'use-item'
+                    ? pokemon.evolutionChain[index + 1].item.name
+                    : 'at ' + pokemon.evolutionChain[index + 1].minLevel}
                 </EvolutionStatus>
                 <img src={ArrowRight} alt="arrow right" />
               </div>
