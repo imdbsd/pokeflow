@@ -1,0 +1,13 @@
+version: '3'
+
+services: 
+  pokedex-fe: 
+    build: ./poke-fe/
+    container_name: pokedex-fe
+    ports: 
+      - 80:80
+  pokedex-be:
+    build: ./poke-be/
+    container_name: pokedex-be
+    ports:
+      - 4000:4000
