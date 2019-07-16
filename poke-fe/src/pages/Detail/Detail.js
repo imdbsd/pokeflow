@@ -13,7 +13,7 @@ import {
   StatsCard,
   EvolutionCard
 } from '../../components'
-import { getPokemon, getCatch } from '../../requests'
+import { getPokemon } from '../../requests'
 
 type DetailProps = {
   history: History,
@@ -121,7 +121,6 @@ class Detail extends Component<DetailProps, *> {
                         types: findPokemonById.types
                       }}
                       vibrant={this.state.vibrant}
-                      catched={getCatch(this.state.pokemon.id)}
                     />
                     <SpeciesCard
                       pokemon={{
