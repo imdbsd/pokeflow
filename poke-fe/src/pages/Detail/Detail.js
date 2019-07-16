@@ -122,7 +122,6 @@ class Detail extends Component<DetailProps, *> {
                       }}
                       vibrant={this.state.vibrant}
                       catched={getCatch(this.state.pokemon.id)}
-                      handleCatch={() => this.handleCatch()}
                     />
                     <SpeciesCard
                       pokemon={{
