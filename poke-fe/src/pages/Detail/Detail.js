@@ -13,7 +13,7 @@ import {
   StatsCard,
   EvolutionCard
 } from '../../components'
-import { getPokemon, addCatch, getCatch } from '../../requests'
+import { getPokemon, getCatch } from '../../requests'
 
 type DetailProps = {
   history: History,
@@ -96,16 +96,6 @@ class Detail extends Component<DetailProps, *> {
     } catch (e) {
       console.log(e)
     }
-  }
-
-  handleCatch = () => {
-    console.log(getCatch(this.state.pokemon.id))
-    if (!getCatch(this.state.pokemon.id)) {
-      addCatch(this.state.pokemon, 'remove')
-    } else {
-      addCatch(this.state.pokemon, 'add')
-    }
-    this.setState(this.state)
   }
 
   render() {

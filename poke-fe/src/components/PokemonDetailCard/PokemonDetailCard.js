@@ -10,11 +10,9 @@ import {
   DescriptionText,
   ButtonCatch
 } from './styles'
-import { addCatch } from '../../requests'
-import PokeBallRed from '../../assets/icon/PokeBallRed.svg'
 
 function PokemonDetailCard(props) {
-  const { pokemon, vibrant, catched } = props
+  const { pokemon, vibrant } = props
   return (
     <CardContainer vibrant={vibrant.hex}>
       <InfoContainer>
@@ -40,9 +38,8 @@ function PokemonDetailCard(props) {
           }.png`}
           alt={pokemon.name}
         />
-        <ButtonCatch catch={catched} onClick={props.handleCatch}>
-          {catched && <img src={PokeBallRed} alt="catched" />}
-          {!catched && <span>&nbsp;</span>}
+        <ButtonCatch catch={false}>
+          <span>&nbsp;</span>
         </ButtonCatch>
       </ImageCointainer>
     </CardContainer>
