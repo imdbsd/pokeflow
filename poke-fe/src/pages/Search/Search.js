@@ -43,9 +43,11 @@ class Search extends Component<{}, SearchState> {
           return (
             <Fragment>
               <SearchBar handleSearchPokemon={this.handleSearchPokemon} />
-              {loading && 'Loading...'}
-              {error && `Error! ${error.message}`}
-              {data && (
+              {loading && this.state.searchKey !== '' && 'Loading...'}
+              {error &&
+                this.state.searchKey !== '' &&
+                `Error! ${error.message}`}
+              {data && data.findPokemonByName && (
                 <AppContainer>
                   <PokemonCard
                     id={data.findPokemonByName ? data.findPokemonByName.id : ''}
