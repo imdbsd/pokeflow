@@ -12,7 +12,6 @@ import {
   PokemonImageWrapper
 } from './styles'
 import { generateIdString } from '../../utils'
-import { getPokemon } from '../../requests'
 
 type CardProps = {
   id: number,
@@ -30,17 +29,6 @@ const FIND_POKEMON_BY_ID = gql`
 function PokemonCard(props: CardProps) {
   const { id, name } = props
   const [vibrant, changeVibrant] = React.useState('#dadada')
-  const [pokemon, changePokemon] = React.useState({})
-  console.log(typeof vibrant)
-
-  const loadPokemonData = async id => {
-    try {
-      const result = await getPokemon(id)
-      changePokemon(result)
-    } catch (e) {
-      console.log(e)
-    }
-  }
 
   React.useEffect(() => {
     if (vibrant === '#dadada') {
@@ -51,12 +39,6 @@ function PokemonCard(props: CardProps) {
         .then(({ Vibrant }) => {
           changeVibrant(Vibrant.getHex())
         })
-    }
-  })
-
-  React.useEffect(() => {
-    if (Object.keys(pokemon).length === 0) {
-      loadPokemonData(id)
     }
   })
 
